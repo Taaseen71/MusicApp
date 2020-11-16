@@ -1,0 +1,43 @@
+// this is a partial. we can create these and then import them to app.scss 
+
+.player {
+    min-height: 20vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time-control {
+    width: 50%;
+  
+    display: flex;
+    flex-direction: row;
+    input{
+        width: 100%;
+        padding: 1rem 2rem;
+        border: 1px solid #29334f;
+    }
+    p {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        padding: 10px auto;
+    }
+}
+
+.play-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 30%;
+    svg {
+        cursor: pointer;
+        color: rgb(223, 136, 223);
+    }
+    svg:hover {
+        color: rgb(184, 2, 2);
+        transition: ease-in-out 0.5s;
+    }
+}
