@@ -7,7 +7,7 @@ import chillHop from "./util"
 import { v4 as uuidv4 } from 'uuid';
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPlay, faPlayCircle } from "@fortawesome/free-solid-svg-icons"
+import { faPauseCircle, faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 
 function App() {
     uuidv4()
@@ -36,7 +36,7 @@ function App() {
 
     useEffect(() => {
         console.log("Music is PLaying =", isPlaying)
-        console.log("Current Song = ", currentSong)
+        // console.log("Current Song = ", currentSong)
     }, [isPlaying])
 
     const handleMenuBar = (e) => {
@@ -63,7 +63,7 @@ function App() {
             <Song currentSong={currentSong} />
             <Player timeUpdateHandler={timeUpdateHandler} songInfo={songInfo} setSongInfo={setSongInfo} currentSong={currentSong} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} playPauseButton={playPauseButton} setPlayPauseButton={setPlayPauseButton} />
             <aside>
-                <Library musicData={musicData} audioRef={audioRef} display={display} setDisplay={setDisplay} setIsPlaying={setIsPlaying} setCurrentSong={setCurrentSong} />
+                <Library playPauseButton={playPauseButton} setPlayPauseButton={setPlayPauseButton} setMusicData={setMusicData} musicData={musicData} audioRef={audioRef} display={display} setDisplay={setDisplay} setIsPlaying={setIsPlaying} setCurrentSong={setCurrentSong} isPlaying={isPlaying} />
             </aside>
             <audio ref={audioRef} onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} src={currentSong.audio}></audio>
 
