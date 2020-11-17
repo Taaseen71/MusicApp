@@ -1,35 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles/App.scss"
 import Player from "./components/Player"
 import Song from "./components/Song";
-import SongList from "./components/SongList"
+import Library from "./components/Library"
 import chillHop from "./util"
 import { v4 as uuidv4 } from 'uuid';
-
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlay, faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 
 function App() {
     uuidv4()
+    const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
     const [musicData, setMusicData] = useState(chillHop())
-    const [currentSong, setCurrentSong] = useState(musicData[2])
+    const [currentSong, setCurrentSong] = useState(musicData[0])
     const [isPlaying, setIsPlaying] = useState(false)
+    const [menuBar, setMenuBar] = useState(faBars)
+    const [display, setDisplay] = useState('none')
+    const [songInfo, setSongInfo] = useState({
+        currentTime: 0,
+        duration: 0
+    })
+
+    const audioRef = useRef(null);
+
+    const timeUpdateHandler = (e) => {
+        const localTime = e.target.currentTime;
+        const localDuration = e.target.duration
+        setSongInfo({ ...songInfo, currentTime: localTime, duration: localDuration })
+    }
 
     useEffect(() => {
         // console.log(musicData);
     }, [musicData])
 
     useEffect(() => {
-        // console.log("Music is PLaying =", isPlaying)
-        // console.log("Current Song = ", currentSong)
+        console.log("Music is PLaying =", isPlaying)
+        console.log("Current Song = ", currentSong)
     }, [isPlaying])
+
+    const handleMenuBar = (e) => {
+        e.preventDefault();
+        if (menuBar === faBars) {
+            setMenuBar(faTimes)
+            setDisplay("block")
+        }
+        else {
+            setMenuBar(faBars)
+            setDisplay("none")
+        }
+    }
+
+
+
+
 
     return (
         <div >
-            <h1 style={{ backgroundColor: currentSong.color[0], opacity: 0.3 }}>Music Player</h1>
+            <div className="menuSVG">
+                <FontAwesomeIcon className="LibraryMenu" size="5x" icon={menuBar} onClick={handleMenuBar} />
+            </div>
             <Song currentSong={currentSong} />
-            <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+            <Player timeUpdateHandler={timeUpdateHandler} songInfo={songInfo} setSongInfo={setSongInfo} currentSong={currentSong} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} playPauseButton={playPauseButton} setPlayPauseButton={setPlayPauseButton} />
             <aside>
-                <SongList musicData={musicData} />
+                <Library musicData={musicData} audioRef={audioRef} display={display} setDisplay={setDisplay} setIsPlaying={setIsPlaying} setCurrentSong={setCurrentSong} />
             </aside>
+            <audio ref={audioRef} onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} src={currentSong.audio}></audio>
+
         </div>
     );
 }

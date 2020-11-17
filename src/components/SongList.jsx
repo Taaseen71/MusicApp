@@ -1,22 +1,26 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-function SongList({ musicData }) {
+
+function SongList({ song, setCurrentSong, setIsPlaying, audioRef }) {
+
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        setIsPlaying(false)
+        await setCurrentSong(song);
+        audioRef.current.play();
+    }
+
+
     return (
-        <div>
-
-            {musicData.map((data) => (
-                <div>
-                    <h3>
-                        {data.name}
-                    </h3>
-                    <span>
-                        <p>
-                            {data.artist}
-                        </p>
-                    </span>
-                </div>
-            ))}
-
+        <div className="songslist" onClick={handleClick}
+        // style={{ backgroundColor: data.color[0] }}
+        >
+            <img src={song.cover} alt={song.name} />
+            <div>
+                <h3>{song.name}</h3>
+                <h5>{song.artist}</h5>
+            </div>
         </div>
     )
 }

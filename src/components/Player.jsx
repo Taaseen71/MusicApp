@@ -1,24 +1,14 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay, faPlayCircle, faChevronCircleLeft, faChevronCircleRight, faPauseCircle, faVolumeMute, faVolumeDown } from "@fortawesome/free-solid-svg-icons"
 
 
-function Player({ currentSong, isPlaying, setIsPlaying }) {
+function Player({ currentSong, isPlaying, setIsPlaying, playPauseButton, setPlayPauseButton, audioRef, songInfo, setSongInfo, timeUpdateHandler }) {
 
-    const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
+    // const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
     const [muted, setMuted] = useState(faVolumeDown)
 
     // console.log(currentSong);
-
-
-    const [songInfo, setSongInfo] = useState({
-        currentTime: 0,
-        duration: 0
-    })
-
-    const audioRef = useRef(null);
-
-
     //! Functions
 
     //? Set Seconds to Minutes Function
@@ -49,7 +39,7 @@ function Player({ currentSong, isPlaying, setIsPlaying }) {
     const changeState = (e) => {
         e.preventDefault();
 
-        // playPause === faPauseCircle ? setPlayPause(faPlayCircle) : setPlayPause(faPauseCircle)
+        //? Ternary ignored==>  playPause === faPauseCircle ? setPlayPause(faPlayCircle) : setPlayPause(faPauseCircle)
 
         if (playPauseButton === faPlayCircle) {
             //? Pressed Play Button
@@ -65,15 +55,9 @@ function Player({ currentSong, isPlaying, setIsPlaying }) {
         }
     }
 
-    const timeUpdateHandler = (e) => {
-        const localTime = e.target.currentTime;
-        const localDuration = e.target.duration
-        setSongInfo({ ...songInfo, currentTime: localTime, duration: localDuration })
-        // console.log(e);
-    }
+
 
     const dragHandler = (e) => {
-        // console.log(e);
         setSongInfo({ ...songInfo, currentTime: e.target.value })
         audioRef.current.currentTime = e.target.value
         console.log(audioRef)
@@ -98,9 +82,9 @@ function Player({ currentSong, isPlaying, setIsPlaying }) {
     return (
         <div className="player">
             <div className="time-control">
-                <p>{sec2time(songInfo.currentTime)}</p>
+                <h3>{sec2time(songInfo.currentTime)}</h3>
                 <input min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler} type="range" />
-                <p>{sec2time(songInfo.duration)}</p>
+                <h3>{sec2time(songInfo.duration)}</h3>
                 {/* <input className="volumeControl" min={0} max={100} type="range" /> */}
                 <FontAwesomeIcon className="mute" size="2x" icon={muted} onClick={muteHandler} />
             </div>
@@ -109,7 +93,7 @@ function Player({ currentSong, isPlaying, setIsPlaying }) {
                 <FontAwesomeIcon className="play" size="5x" icon={playPauseButton} onClick={changeState} />
                 <FontAwesomeIcon className="next" size="5x" icon={faChevronCircleRight} onClick={next} />
             </div>
-            <audio ref={audioRef} onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} src={currentSong.audio}></audio>
+
         </div>
     )
 }

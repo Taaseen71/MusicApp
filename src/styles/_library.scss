@@ -1,0 +1,75 @@
+.library {
+position:fixed;
+top: 0;
+left: 0;
+width: 20rem;
+Margin-top: 60px;
+height: 100%;
+background: rgba(0, 0, 0, 0.00);
+opacity: 1;
+overflow: scroll;
+box-shadow: 2px 2px 50px rgb(204, 204, 204);
+&:hover{
+    opacity: 1;
+    transition: ease-in-out 2s;
+
+}
+}
+
+.LibraryMenu{
+    display: flex;
+    padding: 10px;
+    transition: ease 1s;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 10px;
+    &:hover{
+        opacity: 1
+    }
+}
+
+.menuSVG{
+    display: flex;
+    width: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+.songslist {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    img {
+        height: 80px; 
+    }
+    &:hover{
+        background: rgb(79, 201, 231);
+    }
+    h3, h5{
+        color: black;
+        padding: 3px 10px;
+    }
+}
+
+* {
+    scrollbar-width: thin;
+    crollbar-color: rgba(155,155,155,0.5)
+}
+*::-webkit-scrollbar {
+    width: 5px
+}
+*::-webkit-scrollbar-track{
+    background: transparent
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: rgba(155,155,155,0.5);
+    border-radius: 20px;
+    border: transparent
+}
