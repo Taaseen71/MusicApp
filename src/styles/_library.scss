@@ -11,9 +11,16 @@ overflow: scroll;
 box-shadow: 2px 2px 50px rgb(204, 204, 204);
 &:hover{
     opacity: 1;
-    transition: ease-in-out 2s;
-
+  
 }
+h1 {
+    padding: 15px;
+}
+
+transform: translateX(-100%);
+transition: ease-in-out 2s;
+transition: all 0.5s ease;
+opacity: 0%;
 }
 
 .LibraryMenu{
@@ -76,4 +83,9 @@ box-shadow: 2px 2px 50px rgb(204, 204, 204);
 
 .selected{
     background: rgb(144, 182, 252);
+}
+
+.activeLibrary{
+    transform: translateX(0);
+    opacity: 1;
 }

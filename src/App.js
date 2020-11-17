@@ -16,7 +16,7 @@ function App() {
     const [currentSong, setCurrentSong] = useState(musicData[0])
     const [isPlaying, setIsPlaying] = useState(false)
     const [menuBar, setMenuBar] = useState(faBars)
-    const [display, setDisplay] = useState('none')
+    const [display, setDisplay] = useState(false)
     const [songInfo, setSongInfo] = useState({
         currentTime: 0,
         duration: 0
@@ -43,12 +43,13 @@ function App() {
         e.preventDefault();
         if (menuBar === faBars) {
             setMenuBar(faTimes)
-            setDisplay("block")
+            // setDisplay("block")
         }
         else {
             setMenuBar(faBars)
-            setDisplay("none")
+            // setDisplay("none")
         }
+        setDisplay(!display);
     }
 
 
