@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay, faPlayCircle, faChevronCircleLeft, faChevronCircleRight, faPauseCircle, faVolumeMute, faVolumeDown } from "@fortawesome/free-solid-svg-icons"
 
 
-function Player({ currentSong, isPlaying, setIsPlaying, playPauseButton, setPlayPauseButton, audioRef, songInfo, setSongInfo, timeUpdateHandler }) {
+function Player({ currentSong, setCurrentSong, musicData, isPlaying, setIsPlaying, playPauseButton, setPlayPauseButton, audioRef, songInfo, setSongInfo, timeUpdateHandler }) {
 
     // const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
     const [muted, setMuted] = useState(faVolumeDown)
@@ -33,14 +33,39 @@ function Player({ currentSong, isPlaying, setIsPlaying, playPauseButton, setPlay
 
     //! Event Handlers
 
-    const next = (e) => {
+    const next = async (e) => {
         e.preventDefault();
-        alert("Pressed next")
+        setPlayPauseButton(faPlayCircle)
+        await audioRef.current.pause();
+        // alert("Pressed next")
+        // console.log(currentSong.id)
+        let songId = musicData.findIndex((findSong) => currentSong.id === findSong.id)
+
+        //? if SongId exceeds musicData.length, set length == -1, so that it starts at -1 + 1 = 0
+        if ((songId + 1) === musicData.length) {
+            songId = -1
+        }
+        setCurrentSong(musicData[songId + 1]);
+        console.log(songId)
+        setPlayPauseButton(faPauseCircle);
+        await audioRef.current.play();
+        return
     }
 
-    const previous = (e) => {
+    const previous = async (e) => {
         e.preventDefault();
-        alert("Pressed previous")
+        setPlayPauseButton(faPlayCircle)
+        await audioRef.current.pause();
+        let songId = musicData.findIndex((findSong) => currentSong.id === findSong.id)
+
+        //? if SongId < 0 musicData.length, set length == 6
+        if ((songId) === 0) {
+            songId = musicData.length
+        }
+        setCurrentSong(musicData[songId - 1])
+        setPlayPauseButton(faPauseCircle);
+        await audioRef.current.play();
+        return
     }
 
     const changeState = (e) => {

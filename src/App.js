@@ -62,7 +62,7 @@ function App() {
                 <FontAwesomeIcon className="LibraryMenu" size="5x" icon={menuBar} onClick={handleMenuBar} />
             </div>
             <Song currentSong={currentSong} />
-            <Player timeUpdateHandler={timeUpdateHandler} songInfo={songInfo} setSongInfo={setSongInfo} currentSong={currentSong} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} playPauseButton={playPauseButton} setPlayPauseButton={setPlayPauseButton} />
+            <Player musicData={musicData} setCurrentSong={setCurrentSong} timeUpdateHandler={timeUpdateHandler} songInfo={songInfo} setSongInfo={setSongInfo} currentSong={currentSong} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} playPauseButton={playPauseButton} setPlayPauseButton={setPlayPauseButton} />
             <aside>
                 <Library playPauseButton={playPauseButton} setPlayPauseButton={setPlayPauseButton} setMusicData={setMusicData} musicData={musicData} audioRef={audioRef} display={display} setDisplay={setDisplay} setIsPlaying={setIsPlaying} setCurrentSong={setCurrentSong} isPlaying={isPlaying} />
             </aside>
