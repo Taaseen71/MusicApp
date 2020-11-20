@@ -13,7 +13,7 @@ function App() {
     uuidv4()
     const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
     const [musicData, setMusicData] = useState(chillHop())
-    const [currentSong, setCurrentSong] = useState(musicData[0])
+    const [currentSong, setCurrentSong] = useState(musicData[getRandomNumber(0, musicData.length)])
     const [isPlaying, setIsPlaying] = useState(false)
     const [menuBar, setMenuBar] = useState(faBars)
     const [display, setDisplay] = useState(false)
@@ -24,6 +24,17 @@ function App() {
     })
 
     const audioRef = useRef(null);
+
+    // const randomNumber = (Math.floor(Math.random() * musicData.length))
+
+    function getRandomNumber(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+
+
 
     const timeUpdateHandler = (e) => {
         const localTime = e.target.currentTime;
