@@ -6,19 +6,10 @@
     justify-content: center;
 
     img{
-        width: 10%;
-        margin: 50px;
-        // -webkit-border-radius: 50%;
-        // -moz-border-radius: 50%;
-        // border-radius: 50%;
-        // border: 60px solid black;
-        border-radius: 50%;
-        -webkit-border-radius: 50%; 
-        box-shadow: 0 0 0 70px black;
-        animation-name: spin;
-        animation-duration: 20000ms;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear; 
+        width: 20%;
+        // margin: 50px;
+        border-radius: 10%;
+      
     }
     h2 {
         padding: 3rem 1rem 0rem 1rem;
@@ -34,7 +25,19 @@
     .song-container {
         min-height: 30vh;
         img{
-            width: 50%
+        margin: 50px;
+        // -webkit-border-radius: 50%;
+        // -moz-border-radius: 50%;
+        // border-radius: 50%;
+        // border: 60px solid black;
+        border-radius: 50%;
+        -webkit-border-radius: 50%; 
+        box-shadow: 0 0 0 70px black;
+        animation-name: spin;
+        animation-duration: 20000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        width: 30%
         }
     }
 }
