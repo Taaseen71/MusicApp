@@ -61,16 +61,74 @@ function chillHop() {
             id: uuidv4(),
             active: false,
         },
+
+        {
+            name: "Pine and Oak",
+            cover: "https://chillhop.com/wp-content/uploads/2020/09/2899f7cc22ab12e17d0119819aac3ca9dbab46e6-1024x1024.jpg",
+            artist: "Philanthrope",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=10251",
+            color: ["#b84f39", "#9b604f"],
+            id: uuidv4(),
+            active: false,
+        },
+        {
+            name: "Serendipity",
+            cover: "https://chillhop.com/wp-content/uploads/2020/09/2899f7cc22ab12e17d0119819aac3ca9dbab46e6-1024x1024.jpg",
+            artist: "Philanthrope",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=10249",
+            color: ["#b84f39", "#9b604f"],
+            id: uuidv4(),
+            active: false,
+        },
+        {
+            name: "Maple Leaf Pt.2",
+            cover: "https://chillhop.com/wp-content/uploads/2020/09/2899f7cc22ab12e17d0119819aac3ca9dbab46e6-1024x1024.jpg",
+            artist: "Philanthrope",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=10243",
+            color: ["#b84f39", "#9b604f"],
+            id: uuidv4(),
+            active: false,
+        },
+        {
+            name: "With time",
+            cover: "https://geo-static.traxsource.com/files/images/37dffc482faa6f6e5e270cfa094909a9.jpg",
+            artist: "Leavv",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=9925",
+            color: ["#e29663", "#c7cfa2"],
+            id: uuidv4(),
+            active: false,
+        },
+        {
+            name: "What was before",
+            cover: "https://t2.genius.com/unsafe/484x0/https%3A%2F%2Fimages.genius.com%2F672673d683fdd2af2b579ed7e4612cf0.1000x1000x1.jpg",
+            artist: "Leavv",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=9923",
+            color: ["#e29663", "#c7cfa2"],
+            id: uuidv4(),
+            active: false,
+        },
+
+        {
+            name: "Aqueduct",
+            cover: "https://t2.genius.com/unsafe/484x0/https%3A%2F%2Fimages.genius.com%2F672673d683fdd2af2b579ed7e4612cf0.1000x1000x1.jpg",
+            artist: "Leavv",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=9921",
+            color: ["#e29663", "#c7cfa2"],
+            id: uuidv4(),
+            active: false,
+        },
+
         //ADD MORE HERE
         // {
-        //     name: ,
-        //     cover: ,
-        //     artist: ,
-        //     audio: ,
-        //     color: [,],
+        //     name: "",
+        //     cover: "",
+        //     artist: "",
+        //     audio: "",
+        //     color: ["",""],
         //     id: uuidv4(),
         //     active: false,
-        // }
+        // },
+
 
     ];
 }
