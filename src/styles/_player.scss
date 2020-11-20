@@ -10,11 +10,15 @@
 
 .time-control {
     width: 50%;
-  
     display: flex;
+    align-items: center;
     // flex-direction: row;
     input{
         width: 100%;
+        -webkit-appearance: none;
+        background-color: transparent;
+        cursor: pointer;
+        
     }
     h3 {
         display: flex;
@@ -32,17 +36,69 @@
     width: 30%;
     svg {
         cursor: pointer;
-        color: rgb(2, 92, 255);
+        // color: rgb(2, 92, 255);
+        // color: rgb(168, 175, 189);
+        color: rgb(97, 137, 145);
+
+        // color: rgb(2, 92, 255);
         &:hover{
             color: rgb(184, 2, 2);
             transition: ease-in-out 0.3s;
         }
     }
 }
+ 
+input[type="range"]:focus{
+    outline: none;
+    
+}
+input[type="range"]::-webkit-slider-thumb{
+-webkit-appearance: none;
+height: 15px;
+width: 16px;
+// background: black;
+}
+
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 15px;
+    width: 16px;
+}
+
+.track {
+    width: 100%;
+    // background: blue;
+    height: 1rem;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.animated-track {
+    width: 100%;
+    height: 100%;
+    background: rgb(201, 196, 196);
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(0%);
+    pointer-events: none;
+}
+
+
 
 .mute {
-    color: rgb(1,92,255);
+    // position: relative ;
+    // bottom: 20%;
+    // right: 20%;
+    color: rgb(97, 137, 145);
+    // color: rgb(1,92,255);
  margin:10px;
+   &:hover{
+        color: rgb(184, 2, 2);
+        transition: ease-in-out 0.3s;
+    };
 }
 
 .volumeControl {

@@ -8,6 +8,7 @@ function SongList({ song, musicData, setCurrentSong, setIsPlaying, audioRef, isP
         e.preventDefault();
         setIsPlaying(false)
         await setCurrentSong(song);
+        console.log("Now Playing:", song.name)
 
 
         //? Add Active State

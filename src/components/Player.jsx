@@ -56,7 +56,7 @@ function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlayin
             }
         })
         setMusicData(newSongs)
-    }, [])
+    }, [currentSong])
 
     //! Event Handlers
 
@@ -72,8 +72,8 @@ function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlayin
         if ((songId + 1) === musicData.length) {
             songId = -1
         }
-        setCurrentSong(musicData[songId + 1]);
-        console.log(songId)
+        await setCurrentSong(musicData[songId + 1]);
+        console.log("Playing Next Song:", musicData[songId + 1].name)
         setPlayPauseButton(faPauseCircle);
         await audioRef.current.play();
         return
@@ -89,7 +89,8 @@ function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlayin
         if ((songId) === 0) {
             songId = musicData.length
         }
-        setCurrentSong(musicData[songId - 1])
+        await setCurrentSong(musicData[songId - 1])
+        console.log("Playing Previous Song:", musicData[songId - 1].name)
         setPlayPauseButton(faPauseCircle);
         await audioRef.current.play();
         return
@@ -138,11 +139,19 @@ function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlayin
         }
     }
 
+    //Adding Style
+    const trackAnimation = {
+        transform: `translateX(${songInfo.animationPercentage}%)`
+    }
+
     return (
         <div className="player">
             <div className="time-control">
                 <h3>{startTime}</h3>
-                <input min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler} type="range" />
+                <div className="track" style={{ background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})` }}>
+                    <input min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler} type="range" />
+                    <div className="animated-track" style={trackAnimation}></div>
+                </div>
                 <h3>{songInfo.duration ? endTime : '0:00'}</h3>
                 {/* <input className="volumeControl" min={0} max={100} type="range" /> */}
                 <FontAwesomeIcon className="mute" size="2x" icon={muted} onClick={muteHandler} />
