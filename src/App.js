@@ -13,7 +13,7 @@ function App() {
     uuidv4()
     const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
     const [musicData, setMusicData] = useState(chillHop())
-    const [currentSong, setCurrentSong] = useState(musicData[getRandomNumber(0, musicData.length)])
+    const [currentSong, setCurrentSong] = useState(musicData[getRandomNumber(0, (musicData.length - 1))])
     const [isPlaying, setIsPlaying] = useState(false)
     const [menuBar, setMenuBar] = useState(faBars)
     const [display, setDisplay] = useState(false)
