@@ -56,8 +56,7 @@ function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlayin
             }
         })
         setMusicData(newSongs)
-
-    })
+    }, [])
 
     //! Event Handlers
 
@@ -143,7 +142,7 @@ function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlayin
         <div className="player">
             <div className="time-control">
                 <h3>{startTime}</h3>
-                <input min={0} max={songInfo.duration} value={currentSong.currentTime} onChange={dragHandler} type="range" />
+                <input min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler} type="range" />
                 <h3>{songInfo.duration ? endTime : '0:00'}</h3>
                 {/* <input className="volumeControl" min={0} max={100} type="range" /> */}
                 <FontAwesomeIcon className="mute" size="2x" icon={muted} onClick={muteHandler} />
