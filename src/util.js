@@ -62,6 +62,15 @@ function chillHop() {
             active: false,
         },
         //ADD MORE HERE
+        // {
+        //     name: ,
+        //     cover: ,
+        //     artist: ,
+        //     audio: ,
+        //     color: [,],
+        //     id: uuidv4(),
+        //     active: false,
+        // }
 
     ];
 }
