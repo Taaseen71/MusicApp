@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { faPauseCircle, faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 
 function SongList({ song, musicData, setCurrentSong, setIsPlaying, audioRef, isPlaying, setMusicData, playPauseButton, setPlayPauseButton }) {
@@ -8,7 +8,7 @@ function SongList({ song, musicData, setCurrentSong, setIsPlaying, audioRef, isP
         e.preventDefault();
         setIsPlaying(false)
         await setCurrentSong(song);
-        // audioRef.current.play();
+
 
         //? Add Active State
         const newSongs = musicData.map((currentlyPlaying) => {

@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay, faPlayCircle, faChevronCircleLeft, faChevronCircleRight, faPauseCircle, faVolumeMute, faVolumeDown } from "@fortawesome/free-solid-svg-icons"
 
 
-function Player({ currentSong, setCurrentSong, musicData, isPlaying, setIsPlaying, playPauseButton, setPlayPauseButton, audioRef, songInfo, setSongInfo, timeUpdateHandler }) {
+function Player({ currentSong, setCurrentSong, musicData, setMusicData, isPlaying, setIsPlaying, playPauseButton, setPlayPauseButton, audioRef, songInfo, setSongInfo, timeUpdateHandler }) {
 
     // const [playPauseButton, setPlayPauseButton] = useState(faPlayCircle);
     const [muted, setMuted] = useState(faVolumeDown)
     const [startTime, setStartTime] = useState(0);
-    const [endTime, setEndTime] = useState(0);
+    const [endTime, setEndTime] = useState(10);
 
     // console.log(currentSong);
     //! Functions
@@ -30,6 +30,34 @@ function Player({ currentSong, setCurrentSong, musicData, isPlaying, setIsPlayin
         await setStartTime(sec2time(songInfo.currentTime))
         await setEndTime(sec2time(songInfo.duration))
     }, [songInfo])
+
+    // useEffect(() => {
+    //     if (songInfo.currentTime === songInfo.duration) {
+    //         let songId = musicData.findIndex((findSong) => currentSong.id === findSong.id)
+    //         setCurrentSong(musicData[songId + 1])
+    //     }
+    //     audioRef.current.play()
+    // }, [songInfo])
+
+
+    useEffect(() => {
+        const newSongs = musicData.map((currentlyPlaying) => {
+            if (currentlyPlaying.id === currentSong.id) {
+                return {
+                    ...currentlyPlaying,
+                    active: true
+                }
+            }
+            else {
+                return {
+                    ...currentlyPlaying,
+                    active: false
+                }
+            }
+        })
+        setMusicData(newSongs)
+
+    })
 
     //! Event Handlers
 
@@ -115,8 +143,8 @@ function Player({ currentSong, setCurrentSong, musicData, isPlaying, setIsPlayin
         <div className="player">
             <div className="time-control">
                 <h3>{startTime}</h3>
-                <input min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler} type="range" />
-                <h3>{endTime}</h3>
+                <input min={0} max={currentSong.duration} value={currentSong.currentTime} onChange={dragHandler} type="range" />
+                <h3>{songInfo.duration ? endTime : '0:00'}</h3>
                 {/* <input className="volumeControl" min={0} max={100} type="range" /> */}
                 <FontAwesomeIcon className="mute" size="2x" icon={muted} onClick={muteHandler} />
             </div>
