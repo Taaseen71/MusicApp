@@ -13,7 +13,6 @@ box-shadow: 2px 2px 50px rgb(82, 80, 80);
 
 &:hover{
     opacity: 1;
-  
 }
 h1 {
     padding: 15px;
@@ -94,4 +93,15 @@ opacity: 0%;
 .activeLibrary{
     transform: translateX(0);
     opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .songList{
+        z-index: 10
+    }
+    .library {
+        width: 100%;
+        background: rgb(63, 62, 62);
+        box-shadow: none;
+    }
 }

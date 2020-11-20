@@ -7,7 +7,7 @@ function Library({ musicData, display, setDisplay, setCurrentSong, setIsPlaying,
         <div className={`library ${display ? "activeLibrary" : ""}`}
         // style={{ display: display, transition: "ease-in-out 2s" }}
         >
-            {/* <h1>Library</h1> */}
+            <h1>Library</h1>
             {
                 musicData.map((data) => (
                     <div >
